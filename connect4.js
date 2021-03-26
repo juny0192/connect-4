@@ -81,7 +81,7 @@ const findSpotForCol = (x) => {
  * and append the piece to the cell position.
  */
 
-function placeInTable(y, x) {
+const placeInTable = (y, x) => {
   const createColorCell = document.createElement('div');
   createColorCell.classList.add('piece');
   createColorCell.classList.add(`p${currPlayer}`);
@@ -89,7 +89,7 @@ function placeInTable(y, x) {
   let colorCell = document.getElementById(`${y}-${x}`);
 
   colorCell.append(createColorCell);
-}
+};
 
 const endGame = (msg) => {
   alert(msg);
@@ -121,6 +121,15 @@ const handleClick = (evt) => {
    * in tied. So,
    */
 
+  if (
+    board.every((y) =>
+      y.every((x) => {
+        return x !== undefined;
+      })
+    )
+  ) {
+    endGame('Game is tied!');
+  }
   // if (board.every((row) => row.every((cell) => cell))) {
   //   endGame('Game is tied!');
   // }
@@ -146,14 +155,12 @@ const checkForWin = () => {
     );
   }
 
-  // TODO: read and understand this code. Add comments to help you.
-
   /** 
 okay so this part loop through all cells, and these arrays are winning situation
 so first is wherever the y and x positioned, if horizontally laid 0 to 3 which is
 connected four, and goes to _win function that see if every x and y position is 
 under same color (currPlayer). If these two returned true, 
-the whole function checkForWin() return true
+the whole function checkForWin() return true.
 please let me know if my understanding is right or wrong or miss something.
 */
 
