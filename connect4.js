@@ -116,11 +116,6 @@ const handleClick = (evt) => {
     return endGame(`Player ${currPlayer} won!`);
   }
 
-  /**
-   * I was having a hard time to figure out how to use every method
-   * in tied. So,
-   */
-
   if (
     board.every((y) =>
       y.every((x) => {
@@ -130,9 +125,6 @@ const handleClick = (evt) => {
   ) {
     endGame('Game is tied!');
   }
-  // if (board.every((row) => row.every((cell) => cell))) {
-  //   endGame('Game is tied!');
-  // }
 
   currPlayer = currPlayer === 1 ? 2 : 1;
 };
